@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+    <hr>
+        <h1 class="text-center text-danger">Logged Out</h1>
+    <hr>
+    <h2 class="text-center">You have been logged out of your account.</h2>
+    <hr>
+      <a href="{% url 'home'%}"><p class="text-center">Click Here if you aren't redirected.</p></a>
+    <hr>
+<p class="text-center">You'll be automatically redirected in <span id="count">10</span> seconds...</p>
+
+<script type="text/javascript">
+
+window.onload = function(){
+
+(function(){
+  var counter = 10;
+
+  setInterval(function() {
+    counter--;
+    if (counter >= 0) {
+      span = document.getElementById("count");
+      span.innerHTML = counter;
+    }
+    // Display 'counter' wherever you want to display it.
+    if (counter === 0) {
+    //    alert('this is where it happens');
+        clearInterval(counter);
+    }
+
+  }, 1000);
+
+})();
+
+}
+
+</script>
+
+<meta http-equiv="refresh" content="10;url={% url 'home' %}" />
+{% endblock %}

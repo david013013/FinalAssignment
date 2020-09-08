@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <style>
+    img {
+    max-width: 100%;
+    height: auto;
+}
+
+.item {
+    width: 500px;
+    min-height: 500px;
+    max-height: auto;
+    float: left;
+    margin: 3px;
+    padding: 3px;
+}
+</style>
+    <hr>
+    <h2>Photo Feed</h2>
+    <hr>
+    <div class="row">
+        {% for i in Photos %}
+  <div class="item">
+    <img src="{% static 'img' %}/{{  i.photo }}" alt="Nature" onclick="myFunction(this);">
+    <br>
+    <div class = 'bg-primary text-light'>{{ i.title }}</div>
+      <div>{{ i.description }}</div>
+
+  </div>
+    {% endfor %}
+</div>
+    <br>
+    <hr>
+
+{% endblock %}

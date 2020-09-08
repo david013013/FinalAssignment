@@ -1,0 +1,67 @@
+{% extends 'main.html' %}
+{% block content %}
+    {% load static %}
+    <div class="bg-muted">
+        <hr>
+            <h3 class="text-center">Welcome to PhotoMarket Dashboard !</h3>
+        <hr>
+    </div>
+    <div class="row text-center">
+        <div class="col-4">
+            <hr>
+                <h4>Profile Settings</h4>
+            <hr>
+            <a class="btn btn-primary" href="{% url 'users' %}" role="button">Change Password</a>
+            <hr>
+        </div>
+        <div class="col-4">
+            <hr>
+                <h4>Upload Photo to Feed</h4>
+            <hr>
+            <a class="btn btn-primary" href="{% url 'upload' %}" role="button">Upload Photo</a>
+            <i class="fas fa-fingerprint"></i>
+            <hr>
+        </div>
+        <div class="col-4">
+            <hr>
+                <h4>Go to feed</h4>
+            <hr>
+            <a class="btn btn-primary" href="{% url 'home' %}" role="button">Photo Feed</a>
+        <hr>
+        </div>
+    </div>
+    <style>
+    img {
+    max-width: 100%;
+    height: auto;
+}
+
+.item {
+    width: 500px;
+    min-height: 500px;
+    max-height: auto;
+    float: left;
+    margin: 3px;
+    padding: 3px;
+}
+</style>
+    </div>
+    <div class="text-center">
+        <hr>
+        <p>"<em>In photography there is a reality so subtle that it becomes more real than reality."</em></p>
+        <hr>
+    <div class="row">
+        {% for i in PNG %}
+  <div class="item">
+    <img src="{% static 'img' %}/{{  i.photo }}" alt="Nature">
+    <br>
+    <div class = 'bg-primary text-light'>{{ i.title }}</div>
+      <div>{{ i.description }}</div>
+      <div>
+          <a class="btn btn-danger" href="#" role="button">Delete</a>
+          <br> .
+          <hr>
+      </div>
+  </div>
+    {% endfor %}
+{% endblock %}
